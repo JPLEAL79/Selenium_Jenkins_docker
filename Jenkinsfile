@@ -10,6 +10,7 @@ tools {
         stage('Descargar Fuentes'){
             steps{
                 echo 'Descargando fuentes...'
+                git credentialsId: 'jpleal' , url: 'https://github.com/JPLEAL79/Selenium_Jenkins_docker.git'
             }
         }
     }
