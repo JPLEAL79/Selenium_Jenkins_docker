@@ -20,6 +20,13 @@ tools {
                 sh 'mvn -f pom.xml clean'
             }
         }
+
+        stage('Pruebas Funcionales'){
+        steps{
+            echo 'Ejecución pruebas funcionales...'
+            sh 'mvn -f pom.xml test'
+        }
+        }
     }
 }
 
