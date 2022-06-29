@@ -9,6 +9,7 @@ import org.openqa.selenium.edge.EdgeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -18,6 +19,7 @@ import pages.LoginPage;
 import utils.ConfigManager;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -76,7 +78,8 @@ public class BaseTest {
             opts.addArguments("--disable-notifications");
             opts.addArguments("--start-maximized");
 
-            return new FirefoxDriver(opts);
+           // return new FirefoxDriver(opts);
+            return  new RemoteWebDriver(new URL("http://172.17.0.3:4444"),opts);
 
 
         } else if (BrowserType.SAFARI.contains(browserName)) {
@@ -97,7 +100,9 @@ public class BaseTest {
             ChromeOptions opts = new ChromeOptions();
             opts.addArguments("--disable-notifications"); //Opción de Chrome sirve para desactivar notificacion
             opts.addArguments("--start-maximized"); //Opción de Chrome sirve para que inicie maximizado
-            return new ChromeDriver();
+           // return new ChromeDriver();
+
+            return  new RemoteWebDriver(new URL("http://172.17.0.4:4444"),opts);
         }
     }
 }
